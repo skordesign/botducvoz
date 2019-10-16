@@ -54,7 +54,7 @@ def quote(oldposts, name):
     driver.find_element_by_xpath(
         '//tr/td/div/a[contains(@href, "newreply.php")]').click()
     val = clearImage()
-    val = '\n'
+    val += '\n'
     message = driver.find_element_by_name('message')
     val += 'ĐỨC :sexy:\n'
     if len(oldposts) == 0:
