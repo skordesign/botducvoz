@@ -1,7 +1,6 @@
 
-txt = """[QUOTE=Kcbv''Yel Butter;154408597][IMG]https://imgur.com/syDQHdr.jpg[/IMG][IMG]https://imgur.com/0isoxMB.jpg[/IMG][IMG]https://imgur.com/fCdeN7L.jpg[/IMG]
-
-[URL="https://twitter.com/nakamanian/status/1182450674761519104"]Sóng đánh sát bờ.[/URL][/QUOTE]"""
+txt = """[IMG]https://2.pik.vn/201927169705-2868-4004-b385-a52fd49356d2.png[/IMG]
+Loại này """
 
 start = '[IMG]'
 end = '[/IMG]'

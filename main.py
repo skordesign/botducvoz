@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import time
 import re
+import sys
 
 start = '[IMG]'
 end = '[/IMG]'
@@ -37,21 +38,24 @@ def clearImage():
         t = text[text.find(start)+len(start):text.find(end)]
         text = text.replace('[IMG]{}[/IMG]'.format(t),
                             '[URL="{}"]Ảnh[/URL]'.format(t))
+    while text.find('[img]') != -1:
+        t = text[text.find('[img]')+len('[img]'):text.find('[/img]')]
+        text = text.replace('[img]{}[/img]'.format(t),
+                            '[URL="{}"]Ảnh[/URL]'.format(t))                        
     message.clear()
     # message.send_keys(text)
     script = """arguments[0].value=arguments[1]"""
     driver.execute_script(script, message, text)
-
+    return text
 
 def quote(oldposts, name):
     wait.until(ec.visibility_of_element_located(
         (By.XPATH, '//tr/td/div/a[contains(@href, "newreply.php")]')))
     driver.find_element_by_xpath(
         '//tr/td/div/a[contains(@href, "newreply.php")]').click()
-    clearImage()
+    val = clearImage()
     val = '\n'
     message = driver.find_element_by_name('message')
-    val = message.text + val
     val += 'ĐỨC :sexy:\n'
     if len(oldposts) == 0:
         val += '[I]Đéo tìm được threads của [/I] [COLOR="Red"][B]{}[/B][/COLOR]\n'.format(
