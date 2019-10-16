@@ -56,7 +56,7 @@ def quote(oldposts, name):
     val = clearImage()
     val += '\n'
     message = driver.find_element_by_name('message')
-    val += 'ĐỨC :sexy:\n'
+    val += 'ĐỨC :sexy:\n\n'
     if len(oldposts) == 0:
         val += '[I]Đéo tìm được threads của [/I] [COLOR="Red"][B]{}[/B][/COLOR]\n'.format(
             name)
@@ -65,7 +65,7 @@ def quote(oldposts, name):
             len(oldposts), name)
     for text in oldposts:
         val += '[URL="{}"]{}[/URL]\n'.format(text[1], text[0])
-    val += 'BOT Lậu 4.0\n'
+    val += '\nBOT Lậu 4.0\n'
     script = """arguments[0].value=arguments[1]"""
     driver.execute_script(script, message, val)
     driver.find_element_by_id('vB_Editor_001_save').submit()
